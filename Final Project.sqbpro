@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/DARSH/Desktop/MPS in Analytics/ITC 6000 DBMS/Week 5/Final Project.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3112"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,11:mainSales_Order"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Customer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="120"/><column index="2" value="150"/><column index="3" value="176"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Discounts" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="114"/><column index="2" value="163"/><column index="3" value="140"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Employee" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="123"/><column index="2" value="161"/><column index="3" value="96"/><column index="4" value="208"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Inventory_Log" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="69"/><column index="2" value="91"/><column index="3" value="140"/><column index="4" value="173"/><column index="5" value="148"/><column index="6" value="165"/><column index="7" value="155"/><column index="8" value="167"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Payment_Method" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="192"/><column index="2" value="136"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Product" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="107"/><column index="2" value="137"/><column index="3" value="106"/><column index="4" value="85"/><column index="5" value="52"/><column index="6" value="163"/><column index="7" value="150"/><column index="8" value="142"/><column index="9" value="153"/><column index="10" value="139"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Purchase_Order" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/><column index="2" value="107"/><column index="3" value="127"/><column index="4" value="142"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Sales_Order" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="88"/><column index="2" value="109"/><column index="3" value="129"/><column index="4" value="225"/><column index="5" value="153"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Sales_Transaction" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="5" mode="1"/></sort><column_widths><column index="1" value="137"/><column index="2" value="121"/><column index="3" value="140"/><column index="4" value="153"/><column index="5" value="225"/><column index="6" value="131"/><column index="7" value="191"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Supplier" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="109"/><column index="2" value="149"/><column index="3" value="210"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Transaction_History" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="137"/><column index="2" value="156"/><column index="3" value="156"/><column index="4" value="140"/><column index="5" value="119"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="Final Project 1.sql">-- Create Product table
+CREATE TABLE Product (
+    product_Id INTEGER PRIMARY KEY,
+    product_Name TEXT,
+    description TEXT,
+    category TEXT,
+    price REAL,
+    quantity_in_hand INTEGER,
+    min_stock_level INTEGER,
+    FK_supplier_Id INTEGER,
+    FK_customer_Id INTEGER,
+    supplier_Name TEXT,
+    FOREIGN KEY (FK_supplier_Id) REFERENCES Supplier(supplier_Id),
+    FOREIGN KEY (FK_customer_Id) REFERENCES Customer(customer_Id)
+);
+
+
+-- Create Supplier table
+CREATE TABLE Supplier (
+    supplier_Id INTEGER PRIMARY KEY,
+    supplier_Name TEXT,
+    contact_Info TEXT
+);
+
+-- Create Sales Order table
+CREATE TABLE Sales_Order (
+    Order_Id INTEGER PRIMARY KEY,
+    Order_Date DATE,
+    total_Amount REAL,
+    FK_payment_method_Id INTEGER,
+    FK_customer_Id INTEGER,
+    FOREIGN KEY (FK_payment_method_Id) REFERENCES Payment_Method(payment_method_Id),
+    FOREIGN KEY (FK_customer_Id) REFERENCES Customer(customer_Id)
+);
+
+-- Create Purchase Order table
+CREATE TABLE Purchase_Order (
+    Order_Id INTEGER PRIMARY KEY,
+    Order_date DATE,
+    total_amount REAL,
+    FK_supplier_Id INTEGER,
+    FOREIGN KEY (FK_supplier_Id) REFERENCES Supplier(supplier_Id)
+);
+
+
+-- Create Inventory Log table
+CREATE TABLE Inventory_Log (
+    log_ID INTEGER PRIMARY KEY,
+    date DATE,
+    FK_product_Id INTEGER,
+    quantity_Removed INTEGER,
+    quantity_Added INTEGER,
+    quantity_in_Hand INTEGER,
+    min_stock_Level INTEGER,
+    FK__employee_Id INTEGER,
+    FOREIGN KEY (FK_product_Id) REFERENCES Product(product_Id),
+    FOREIGN KEY (FK__employee_Id) REFERENCES Employee(employee_Id)
+);
+
+-- Create Employee table
+CREATE TABLE Employee (
+    employee_Id INTEGER PRIMARY KEY,
+    employee_Name TEXT,
+    position TEXT,
+    contact_Info TEXT
+);
+
+-- Create Discounts table
+CREATE TABLE Discounts (
+   discount_Id INTEGER PRIMARY KEY,
+   discount_Amount INTEGER,
+   FK_product_Id INTEGER,
+   FOREIGN KEY (FK_product_Id) REFERENCES Product(product_Id)
+);
+
+
+ CREATE TABLE Customer (
+   customer_Id INTEGER PRIMARY KEY,
+   customer_Name TEXT,
+   customer_Info TEXT,
+);
+-- Create Transaction_History table
+CREATE TABLE Transaction_History (
+    transaction_Id INTEGER PRIMARY KEY,
+    transaction_date DATE,
+    transaction_type TEXT,
+    FK_product_Id INTEGER,
+    FK_order_Id INTEGER,
+    FOREIGN KEY (FK_product_Id) REFERENCES Product(product_Id),
+    FOREIGN KEY (FK_order_Id) REFERENCES Sales_Order(Order_Id)
+);
+
+-- Create Sales_Transaction table
+CREATE TABLE Sales_Transaction (
+    transaction_Id INTEGER PRIMARY KEY,
+    FK_Order_Id INTEGER,
+    FK_product_Id INTEGER,
+    FK_customer_Id INTEGER,
+        quantity_Sold INTEGER,
+    FK_transaction_Date DATE,
+    FOREIGN KEY (FK_Order_Id) REFERENCES Sales_Order(Order_Id),
+    FOREIGN KEY (FK_product_Id) REFERENCES Product(product_Id),
+    FOREIGN KEY (FK_customer_Id) REFERENCES Customer(customer_Id)
+);
+
+-- Create Customer table
+CREATE TABLE Customer (
+    customer_Id INTEGER PRIMARY KEY,
+    customer_Name TEXT,
+    customer_Info TEXT
+);
+
+-- Insert data into Payment_Method table
+INSERT INTO Payment_Method VALUES (1, 'Credit Card');
+INSERT INTO Payment_Method VALUES (2, 'PayPal');
+
+-- Insert data into Supplier table
+INSERT INTO Supplier VALUES (1, 'Tech Supplier', 'techsupplier@gmail.com');
+INSERT INTO Supplier VALUES (2, 'Office Supplies Inc.', 'osinc@gmail.com');
+
+-- Insert data into Customer table
+INSERT INTO Customer VALUES (1, 'John Doe', 'john.doe@gmail.com');
+INSERT INTO Customer VALUES (2, 'Jane Smith', 'jane.smith@gmail.com');
+
+-- Insert data into Employee table
+INSERT INTO Employee VALUES (1, 'Manager Smith', 'Manager', 'smith@gmail.com');
+INSERT INTO Employee VALUES (2, 'Salesperson Johnson', 'Salesperson', 'Johnson@gmail.com');
+
+-- Insert data into Product table
+INSERT INTO Product VALUES (1, 'Laptop', 'High-performance laptop', 'Electronics', 999.99, 50, 10, 1, 1, 'Tech Supplier');
+INSERT INTO Product VALUES (2, 'Printer', 'Wireless color printer', 'Electronics', 199.99, 20, 25, 2, 1, 'Office Supplies Inc.');
+INSERT INTO Product VALUES (3, 'Tablet', 'Portable tablet device', 'Electronics', 499.99, 10, 15, 2, 1, 'Tech Supplier');
+
+-- Update data in Product table
+UPDATE Product SET product_Name = 'Laptop', description = 'High-performance laptop', category = 'Electronics', price = 71999.00, quantity_in_hand = 50, min_stock_level = 10, FK_supplier_Id = 1, FK_customer_Id = 1, supplier_Name = 'Tech Supplier' WHERE product_Id = 1;
+UPDATE Product SET product_Name = 'Printer', description = 'Wireless color printer', category = 'Electronics', price = 82999.00, quantity_in_hand = 20, min_stock_level = 5, FK_supplier_Id = 2, FK_customer_Id = 1, supplier_Name = 'Office Supplies Inc.' WHERE product_Id = 2;
+
+-- Insert data into Sales_Order table
+INSERT INTO Sales_Order VALUES (1, '2023-02-01', 1199.98, 1, 1);
+INSERT INTO Sales_Order VALUES (2, '2023-02-02', 399.98, 2, 2);
+-- Update data in Sales_Order table
+UPDATE Sales_Order SET Order_Date = '2023-02-01', total_Amount = 80000, FK_payment_method_Id = 1, FK_customer_Id = 1 WHERE Order_Id = 1;
+UPDATE Sales_Order SET Order_Date = '2023-02-02', total_Amount = 95000, FK_payment_method_Id = 2, FK_customer_Id = 2 WHERE Order_Id = 2;
+
+
+-- Insert data into Discounts table
+INSERT INTO Discounts VALUES (1, 10, 1);
+INSERT INTO Discounts VALUES (2, 5, 2);
+
+-- Insert data into Inventory_Log table
+INSERT INTO Inventory_Log VALUES (1, '2023-02-01', 1, 0, 10, 40, 10, 1);
+INSERT INTO Inventory_Log VALUES (2, '2023-02-02', 2, 0, 5, 15, 5, 2);
+
+-- Insert data into Transaction_History table
+INSERT INTO Transaction_History VALUES (1, '2023-02-01', 'Sale', 1, 1);
+INSERT INTO Transaction_History VALUES (2, '2023-02-02', 'Sale', 2, 2);
+
+-- Insert data into Sales_Transaction table
+INSERT INTO Sales_Transaction VALUES (1, 1, 1, 1, 1, '2023-02-01');
+INSERT INTO Sales_Transaction VALUES (2, 2, 2, 2, 1, '2023-02-02');
+
+-- Insert data into Purchase_Order table
+INSERT INTO Purchase_Order VALUES (1, '2023-02-01',60000, 1);
+INSERT INTO Purchase_Order VALUES (2, '2023-02-02', 65000, 2);
+
+-- Data Implementation:
+-- Retrieve product details for a specific sales transaction
+SELECT Sales_Transaction.transaction_Id, Product.product_Name, Sales_Transaction.quantity_Sold, Sales_Transaction.FK_transaction_Date
+FROM Sales_Transaction
+JOIN Product ON Sales_Transaction.FK_product_Id = Product.product_Id
+WHERE Sales_Transaction.transaction_Id = 1;
+
+-- Retrieve the inventory log for a specific product
+SELECT Inventory_Log.log_ID, Inventory_Log.date, Inventory_Log.quantity_Removed, Inventory_Log.quantity_Added, Inventory_Log.quantity_in_Hand
+FROM Inventory_Log
+JOIN Product ON Inventory_Log.FK_product_Id = Product.product_Id
+WHERE Product.product_Id = 1;
+
+-- Retrieve products below minimum stock level
+SELECT Product.product_Name, Product.quantity_in_hand, Product.min_stock_level
+FROM Product
+WHERE Product.quantity_in_hand &lt; Product.min_stock_level;
+
+-- Retrieve sales transaction details with product information
+SELECT Sales_Transaction.transaction_Id, Product.product_Name, Sales_Transaction.quantity_Sold, Sales_Transaction.FK_transaction_Date
+FROM Sales_Transaction
+JOIN Product ON Sales_Transaction.FK_product_Id = Product.product_Id;
+
+SELECT * FROM Product
+JOIN Supplier ON Product.FK_supplier_Id = Supplier.supplier_Id;
+
+SELECT Sales_Order.Order_Id, Sales_Order.Order_Date, Sales_Order.total_Amount, Customer.customer_Name, Product.product_Name
+FROM Sales_Order
+JOIN Customer ON Sales_Order.FK_customer_Id = Customer.customer_Id
+JOIN Sales_Transaction ON Sales_Order.Order_Id = Sales_Transaction.FK_Order_Id
+JOIN Product ON Sales_Transaction.FK_product_Id = Product.product_Id;
+
+SELECT Inventory_Log.log_ID, Inventory_Log.date, Inventory_Log.quantity_Added, Employee.employee_Name
+FROM Inventory_Log
+JOIN Employee ON Inventory_Log.FK__employee_Id = Employee.employee_Id;
+
+SELECT Transaction_History.transaction_Id, Transaction_History.transaction_date, Transaction_History.transaction_type,
+       Product.product_Name, Sales_Order.Order_Id
+FROM Transaction_History
+JOIN Product ON Transaction_History.FK_product_Id = Product.product_Id
+JOIN Sales_Order ON Transaction_History.FK_order_Id = Sales_Order.Order_Id;
+
+SELECT Employee.employee_Id, Employee.employee_Name, Employee.position
+FROM Employee;
+
+SELECT Discounts.discount_Id, Discounts.discount_Amount, Product.product_Name
+FROM Discounts
+JOIN Product ON Discounts.FK_product_Id = Product.product_Id;
+
+--User Action: Registration
+-- Insert data into Supplier table
+INSERT INTO Supplier (supplier_Id, supplier_Name, contact_Info)
+VALUES (3, 'TechGear INC', 'techgear@gmail.com');
+
+-- Insert data into Product table
+INSERT INTO Product (product_Id, product_Name, description, category, price, quantity_In_Hand, min_Stock_Level, FK_supplier_Id, FK_customer_Id)
+VALUES (4, 'Laptop', 'High-performance laptop', 'Electronics', 1999.99, 15, 25, 3, 3);
+
+-- Select data from Product table
+SELECT product_Name, quantity_In_Hand
+FROM Product
+WHERE product_Id = 4;
+
+--Analytics, Reports, and Metrics
+-- 1. Sales Performance Report:
+SELECT
+    P.product_Name,
+    SUM(ST.quantity_Sold) AS total_Quantity_Sold,
+    SUM(ST.quantity_Sold * P.price) AS total_Sales
+FROM
+    Sales_Transaction ST
+JOIN
+    Product P ON ST.FK_product_Id = P.product_Id
+GROUP BY
+    P.product_Name
+ORDER BY
+    total_Sales DESC;
+	
+-- 2. Inventory Status Report:
+SELECT
+    P.product_Name,
+	p.category,
+    P.quantity_in_hand,
+    P.min_stock_level	
+FROM
+    Product P
+WHERE
+    P.quantity_in_hand &lt;= P.min_stock_level;
+	
+-- 3. Supplier Performance Metrics:
+SELECT
+    S.supplier_Name,
+    COUNT(PO.Order_Id) AS total_Purchase_Orders
+FROM
+    Supplier S
+LEFT JOIN
+    Purchase_Order PO ON S.supplier_Id = PO.FK_supplier_Id
+GROUP BY
+    S.supplier_Name
+ORDER BY
+    total_Purchase_Orders DESC;
+	
+
+
+
+
+
+
+
+	
+	
+	
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
